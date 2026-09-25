@@ -1279,6 +1279,31 @@
   .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .video-embed .vcap { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 12px 0 0; padding-left: 14px; border-left: 3px solid var(--red); }
   @supports not (aspect-ratio: 16 / 9) { .video-embed .frame { height: auto; padding-top: 56.25%; } .full-img { height: auto; padding-top: 56.25%; } }
+
+  /* ---------- Photo carousel ---------- */
+  .carousel { margin: 32px 0 40px; }
+  .carousel-frame { position: relative; }
+  .carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; border-radius: var(--radius-md); scrollbar-width: none; }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-slide { flex: 0 0 100%; scroll-snap-align: center; position: relative; }
+  .carousel-slide img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: var(--radius-md); }
+  .carousel-slide .slide-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 34px 18px 14px; color: #fff; font-size: 13px; line-height: 1.45; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.6) 100%); border-radius: 0 0 var(--radius-md) var(--radius-md); }
+  .carousel-slide .slide-cap span { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.9; }
+  .carousel-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 999px; border: none; background: rgba(255,255,255,.92); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+  .carousel-nav:hover { background: #fff; }
+  .carousel-nav.prev { left: 12px; }
+  .carousel-nav.next { right: 12px; }
+  .carousel-nav svg { width: 20px; height: 20px; }
+  .carousel-dots { display: flex; gap: 7px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+  .carousel-dots button { width: 8px; height: 8px; border-radius: 999px; border: none; padding: 0; background: var(--rule); cursor: pointer; transition: width .2s, background .2s; }
+  .carousel-dots button[aria-current="true"] { background: var(--red); width: 22px; }
+  .carousel-caption { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 12px 0 0; padding-left: 14px; border-left: 3px solid var(--red); }
+  .carousel-caption strong { color: var(--ink); font-weight: 600; }
+  @supports not (aspect-ratio: 16 / 9) { .carousel-slide img { height: auto; } }
+  @media (max-width: 760px) {
+    .carousel-nav { width: 34px; height: 34px; }
+    .carousel-slide .slide-cap { font-size: 12px; padding: 28px 14px 12px; }
+  }
 </style>
 </head>
 <body>
@@ -1308,8 +1333,8 @@
            alt="A 2026 Toyota Tacoma TRD Pro driving across open desert beside a vintage Toyota race truck"
            loading="eager"
            fetchpriority="high"
-           width="1920"
-           height="1080" />
+           width="1180"
+           height="664" />
     </picture>
     <span class="credit">DALTON TOYOTA NATIONAL CITY · USED &amp; CPO TRUCKS</span>
     <figcaption class="visually-hidden">The 2026 Toyota Tacoma. We stock used and Certified Used Tacoma and Tundra pickups at Dalton Toyota National City on the Mile of Cars.</figcaption>
@@ -1512,6 +1537,105 @@
         <blockquote class="pull" style="font-style: italic;">
           We would rather sell you the right truck than the biggest one.
         </blockquote>
+
+        <figure class="carousel" id="toyota-carousel" aria-roledescription="carousel" aria-label="Toyota 4Runner photo gallery">
+          <div class="carousel-frame">
+            <div class="carousel-track" tabindex="0">
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 22">
+                <img src="carousel/4runner-01.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner photographed from the front and side.">
+                <div class="slide-cap"><span>1 &middot; Front three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 22">
+                <img src="carousel/4runner-02.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner photographed from the front and side.">
+                <div class="slide-cap"><span>2 &middot; Front three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 22">
+                <img src="carousel/4runner-03.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen in side profile from the passenger side.">
+                <div class="slide-cap"><span>3 &middot; Passenger side</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 22">
+                <img src="carousel/4runner-04.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen in side profile from the passenger side.">
+                <div class="slide-cap"><span>4 &middot; Passenger side</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 22">
+                <img src="carousel/4runner-05.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen from the rear and side.">
+                <div class="slide-cap"><span>5 &middot; Rear three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="6 of 22">
+                <img src="carousel/4runner-06.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen from the rear and side.">
+                <div class="slide-cap"><span>6 &middot; Rear three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="7 of 22">
+                <img src="carousel/4runner-07.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen from the rear and side.">
+                <div class="slide-cap"><span>7 &middot; Rear three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="8 of 22">
+                <img src="carousel/4runner-08.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner photographed straight on from the rear.">
+                <div class="slide-cap"><span>8 &middot; Rear view</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="9 of 22">
+                <img src="carousel/4runner-09.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen from the rear and side.">
+                <div class="slide-cap"><span>9 &middot; Rear three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="10 of 22">
+                <img src="carousel/4runner-10.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen from the rear and side.">
+                <div class="slide-cap"><span>10 &middot; Rear three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="11 of 22">
+                <img src="carousel/4runner-11.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen from the rear and side.">
+                <div class="slide-cap"><span>11 &middot; Rear three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="12 of 22">
+                <img src="carousel/4runner-12.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen in side profile from the driver side.">
+                <div class="slide-cap"><span>12 &middot; Driver side</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="13 of 22">
+                <img src="carousel/4runner-13.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner seen in side profile from the driver side.">
+                <div class="slide-cap"><span>13 &middot; Driver side</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="14 of 22">
+                <img src="carousel/4runner-14.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner photographed from the front and side.">
+                <div class="slide-cap"><span>14 &middot; Front three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="15 of 22">
+                <img src="carousel/4runner-15.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner photographed from the front and side.">
+                <div class="slide-cap"><span>15 &middot; Front three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="16 of 22">
+                <img src="carousel/4runner-16.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner photographed from the front and side.">
+                <div class="slide-cap"><span>16 &middot; Front three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="17 of 22">
+                <img src="carousel/4runner-17.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner photographed straight on from the front.">
+                <div class="slide-cap"><span>17 &middot; Front view</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="18 of 22">
+                <img src="carousel/4runner-18.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner photographed from the front and side.">
+                <div class="slide-cap"><span>18 &middot; Front three-quarter</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="19 of 22">
+                <img src="carousel/4runner-19.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner, interior: the dashboard, steering wheel and center screen.">
+                <div class="slide-cap"><span>19 &middot; Dashboard</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="20 of 22">
+                <img src="carousel/4runner-20.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner, interior: the front seats and center console.">
+                <div class="slide-cap"><span>20 &middot; Front seats</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="21 of 22">
+                <img src="carousel/4runner-21.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner, interior: the second-row seats.">
+                <div class="slide-cap"><span>21 &middot; Second row</span></div>
+              </div>
+              <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="22 of 22">
+                <img src="carousel/4runner-22.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A gray Toyota 4Runner, interior: the cargo area with the rear seats folded.">
+                <div class="slide-cap"><span>22 &middot; Cargo area</span></div>
+              </div>
+            </div>
+            <button type="button" class="carousel-nav prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <button type="button" class="carousel-nav next" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+          <div class="carousel-dots" role="tablist" aria-label="Choose photo"><button type="button" aria-label="Go to photo 1" aria-current="true"></button><button type="button" aria-label="Go to photo 2"></button><button type="button" aria-label="Go to photo 3"></button><button type="button" aria-label="Go to photo 4"></button><button type="button" aria-label="Go to photo 5"></button><button type="button" aria-label="Go to photo 6"></button><button type="button" aria-label="Go to photo 7"></button><button type="button" aria-label="Go to photo 8"></button><button type="button" aria-label="Go to photo 9"></button><button type="button" aria-label="Go to photo 10"></button><button type="button" aria-label="Go to photo 11"></button><button type="button" aria-label="Go to photo 12"></button><button type="button" aria-label="Go to photo 13"></button><button type="button" aria-label="Go to photo 14"></button><button type="button" aria-label="Go to photo 15"></button><button type="button" aria-label="Go to photo 16"></button><button type="button" aria-label="Go to photo 17"></button><button type="button" aria-label="Go to photo 18"></button><button type="button" aria-label="Go to photo 19"></button><button type="button" aria-label="Go to photo 20"></button><button type="button" aria-label="Go to photo 21"></button><button type="button" aria-label="Go to photo 22"></button></div>
+          <figcaption class="carousel-caption"><strong>A full walkaround of a Toyota 4Runner.</strong> Swipe or use the arrows. Equipment varies by trim and model year, so check the window sticker on the vehicle you are looking at.</figcaption>
+        </figure>
       </section>
 
       <!-- §05 How to check a used Toyota pickup before you buy -->
@@ -1802,6 +1926,45 @@
 
     map.forEach((_li, el) => io.observe(el));
   })();
+</script>
+
+<script>
+(function () {
+  var root = document.getElementById('toyota-carousel');
+  if (!root) return;
+  var track = root.querySelector('.carousel-track');
+  var slides = root.querySelectorAll('.carousel-slide');
+  var dots = root.querySelectorAll('.carousel-dots button');
+  var prev = root.querySelector('.carousel-nav.prev');
+  var next = root.querySelector('.carousel-nav.next');
+  var index = 0;
+  function sync() {
+    dots.forEach(function (d, n) { d.setAttribute('aria-current', n === index ? 'true' : 'false'); });
+    prev.style.visibility = index === 0 ? 'hidden' : 'visible';
+    next.style.visibility = index === slides.length - 1 ? 'hidden' : 'visible';
+  }
+  function go(i) {
+    index = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: slides[index].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+    sync();
+  }
+  prev.addEventListener('click', function () { go(index - 1); });
+  next.addEventListener('click', function () { go(index + 1); });
+  dots.forEach(function (d, n) { d.addEventListener('click', function () { go(n); }); });
+  var raf;
+  track.addEventListener('scroll', function () {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function () {
+      var nearest = Math.round(track.scrollLeft / slides[0].offsetWidth);
+      if (nearest !== index) { index = nearest; sync(); }
+    });
+  });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
+  });
+  sync();
+})();
 </script>
 
 </body>
